@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "314d516e-b178-4788-b2cb-1444bfed8194",
+		"name": "Grant-Distribution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create-household",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"housingType\": \"CONDOMINIUM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-household",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-household"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retreive-all-households",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/retrieve-all-households",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"retrieve-all-households"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve-household",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/retrieve-household/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"retrieve-household",
+						"1"
+					],
+					"query": [
+						{
+							"key": "householdId",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-household",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/delete-household/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"delete-household",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-family-member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"familyMemberToCreate\": {\r\n        \"dateOfBirth\": \"2021-06-06T23:59:00.000\",\r\n        \"gender\": \"MALE\",\r\n        \"name\": \"BBB\",\r\n        \"annualIncome\": 100,\r\n        \"maritalStatus\": \"single\",\r\n        \"occupationType\": \"STUDENT\"\r\n    },\r\n    \"householdId\": 1,\r\n    \"spouseId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/create-family-member",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"create-family-member"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-family-member",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/delete-family-member/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"delete-family-member",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search-households",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/search-households?householdSizeLT=5&householdSizeMT=1&householdIncomeLT=500&householdIncomeMT=100&hasAgeLT=5&hasAgeMT=16&hasSpouse=true",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search-households"
+					],
+					"query": [
+						{
+							"key": "householdSizeLT",
+							"value": "5"
+						},
+						{
+							"key": "householdSizeMT",
+							"value": "1"
+						},
+						{
+							"key": "householdIncomeLT",
+							"value": "500"
+						},
+						{
+							"key": "householdIncomeMT",
+							"value": "100"
+						},
+						{
+							"key": "hasAgeLT",
+							"value": "5"
+						},
+						{
+							"key": "hasAgeMT",
+							"value": "16"
+						},
+						{
+							"key": "hasSpouse",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": ""
+		}
+	]
+}
