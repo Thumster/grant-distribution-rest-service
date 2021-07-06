@@ -4,7 +4,9 @@ import com.example.grantdistributionrestservice.model.entity.FamilyMember;
 import com.example.grantdistributionrestservice.model.entity.Household;
 import com.example.grantdistributionrestservice.model.exceptions.FamilyMemberNotFoundException;
 import com.example.grantdistributionrestservice.model.exceptions.HouseholdNotFoundException;
+import com.example.grantdistributionrestservice.model.exceptions.SearchHouseholdException;
 import com.example.grantdistributionrestservice.model.vo.CreateFamilyMemberReq;
+import com.example.grantdistributionrestservice.model.vo.SearchHouseholdsReq;
 import com.example.grantdistributionrestservice.service.IFamilyMemberService;
 import com.example.grantdistributionrestservice.service.IHouseholdService;
 import lombok.NoArgsConstructor;
@@ -32,8 +34,7 @@ public class GrantDistrubutionController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Household createHousehold(@Valid @RequestBody Household household) {
-        Household createdHousehold = householdService.create(household);
-        return createdHousehold;
+        return householdService.create(household);
     }
 
     @GetMapping(value = "/retrieve-household/{householdId}",
@@ -68,5 +69,11 @@ public class GrantDistrubutionController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public FamilyMember deleteFamilyMember(@PathVariable Long familyMemberId) throws FamilyMemberNotFoundException {
         return familyMemberService.deleteFamilyMember(familyMemberId);
+    }
+
+    @GetMapping(value = "/search-households",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Household> searchHouseholds(SearchHouseholdsReq searchHouseholdsReq) throws SearchHouseholdException {
+        return householdService.searchHouseholds(searchHouseholdsReq);
     }
 }

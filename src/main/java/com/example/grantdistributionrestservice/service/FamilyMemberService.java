@@ -51,6 +51,11 @@ public class FamilyMemberService implements IFamilyMemberService {
 
         if (spouseId != null) {
             FamilyMember spouse = retrieveFamilyMember(spouseId);
+
+            if (spouseId.equals(familyMember.getFamilyMemberId())) {
+                throw new FamilyMemberNotFoundException("Unable to set spouse as own self");
+            }
+
             familyMember.setSpouse(spouse);
             spouse.setSpouse(familyMember);
             familyMemberRepository.saveAndFlush(spouse);

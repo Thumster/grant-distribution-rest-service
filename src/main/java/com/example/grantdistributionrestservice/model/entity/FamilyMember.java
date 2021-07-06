@@ -1,21 +1,18 @@
 package com.example.grantdistributionrestservice.model.entity;
 
-import com.example.grantdistributionrestservice.model.enums.HousingTypeEnum;
 import com.example.grantdistributionrestservice.model.enums.OccupationTypeEnum;
 import com.example.grantdistributionrestservice.validator.ValidateEnum;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -50,7 +47,7 @@ public class FamilyMember {
     @Past(message = "Date of Birth has to be a past date")
     @NotNull(message = "Date of Birth is mandatory")
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
 
     @OneToOne

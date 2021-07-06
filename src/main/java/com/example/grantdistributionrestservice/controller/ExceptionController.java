@@ -2,6 +2,7 @@ package com.example.grantdistributionrestservice.controller;
 
 import com.example.grantdistributionrestservice.model.exceptions.FamilyMemberNotFoundException;
 import com.example.grantdistributionrestservice.model.exceptions.HouseholdNotFoundException;
+import com.example.grantdistributionrestservice.model.exceptions.SearchHouseholdException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +36,10 @@ public class ExceptionController {
     @ExceptionHandler(FamilyMemberNotFoundException.class)
     public ResponseEntity<String> handleFamilyMemberNotFoundException(FamilyMemberNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(SearchHouseholdException.class)
+    public ResponseEntity<Map> handleSearchHouseholdExceptions(SearchHouseholdException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getErrors());
     }
 }
